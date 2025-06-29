@@ -286,12 +286,9 @@ export default function App() {
         {/* Hero Section */}
         <div className="mb-8 text-center">
           <h1 className="text-5xl xs:text-6xl font-extrabold mb-3 leading-tight bg-gradient-to-br from-[#ff5a8a] to-[#ffb6b6] bg-clip-text text-transparent drop-shadow-lg">Kupid Dating App</h1>
-          <div className="text-xl xs:text-2xl font-semibold text-gray-900 mb-2">TikTok-style Dating for College Students</div>
+          <div className="text-xl xs:text-2xl font-semibold text-gray-900 mb-2">Where Gen Z Dates Live and Online</div>
           <div className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto mb-4 leading-relaxed">
-            <p>KUPID is the all-in-one dating platform built for Gen Z.</p>
-            <p className="mt-2">We combine real-life energy with digital matchmaking — where students can match, watch, and participate in dating like never before. From viral campus events to an interactive app experience, we're creating the first dating ecosystem that lives both online and in person.</p>
-            <p className="mt-2">Born at UT Austin, KUPID is growing into a full-stack platform that blends culture, comedy, and connection — built by Gen Z, for Gen Z.</p>
-            <p className="mt-2 font-semibold text-gray-900">Let's be real — Tinder never pulled up to your econ class. We did.</p>
+            <p>Kupid is the dating app built for Gen Z college students. We turn campuses into stages and dating into a full-blown experience. From viral live shows to a TikTok-style app, students can match, watch, and play their way into real connections. Born at UT Austin. Built by students. Tinder never pulled up to your lecture hall. We did. :)</p>
           </div>
         </div>
         {/* Waitlist Form Card */}
