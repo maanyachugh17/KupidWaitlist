@@ -388,8 +388,8 @@ export default function App() {
           </div>
         </section>
         {/* Testimonials Section */}
-        <section className="w-full mt-16 mb-4">
-          <h2 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold mb-8 mt-20 text-center drop-shadow-sm">
+        <section className="w-full mt-8 mb-4">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold mb-8 mt-8 text-center drop-shadow-sm">
             <span className="bg-gradient-to-br from-[#ff5a8a] to-[#ffb6b6] bg-clip-text text-transparent">Loved</span> <span className="text-black">by students like you</span>
           </h2>
           <div className="flex flex-col gap-4">
