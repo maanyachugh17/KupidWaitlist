@@ -290,7 +290,8 @@ export default function App() {
           <div className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto mb-4 leading-relaxed">
             <p>Kupid is the dating app built for Gen Z college students. We turn campuses into stages and dating into a full-blown experience. From viral live shows to a TikTok-style app, students can match, watch, and play their way into real connections.</p>
             <p className="mt-2">Born at UT Austin. Built by students.</p>
-            <p className="mt-2">Tinder never pulled up to your lecture hall. We did. :)</p>
+            <p className="mt-2">Tinder never pulled up to your lecture hall.</p>
+            <p className="mt-2">We did. :)</p>
           </div>
         </div>
         {/* Waitlist Form Card */}
@@ -311,9 +312,9 @@ export default function App() {
                 onChange={handleChange}
                 autoComplete="off"
               />
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-stretch">
                 <select
-                  className="flex-shrink-0 w-24 px-3 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-pink-400 outline-none text-sm bg-white shadow-sm transition-all duration-300 focus:scale-105"
+                  className="flex-shrink-0 w-28 px-2 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-pink-400 outline-none text-sm bg-white shadow-sm transition-all duration-300 focus:scale-105"
                   name="countryCode"
                   value={form.countryCode}
                   onChange={handleCountryCodeChange}
@@ -325,7 +326,7 @@ export default function App() {
                   ))}
                 </select>
                 <input
-                  className="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-pink-400 outline-none text-lg bg-white placeholder-gray-400 shadow-sm transition-all duration-300 focus:scale-105"
+                  className="flex-1 min-w-0 px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-pink-400 outline-none text-lg bg-white placeholder-gray-400 shadow-sm transition-all duration-300 focus:scale-105"
                   type="tel"
                   name="phone"
                   placeholder="Phone Number"
