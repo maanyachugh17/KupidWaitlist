@@ -507,8 +507,18 @@ export default function App() {
         <div className="absolute left-1/2 -translate-x-1/2 w-[420px] h-[320px] bg-gradient-to-br from-[#ffb6b6] via-[#ff5a8a] to-[#fff0f6] opacity-15 blur-3xl rounded-full top-0" style={{zIndex: -1}} />
       </main>
       <footer className="relative z-10 mt-16 text-gray-400 text-xs xs:text-sm text-center pb-6 border-t border-gray-100 pt-6 bg-white/80 overflow-visible">
-        <div className="absolute left-1/2 -translate-x-1/2 -top-10 animate-float-heart pointer-events-none">
+        <div className="absolute left-1/2 -translate-x-1/2 -top-10 animate-kupid-magic pointer-events-none" style={{marginLeft: '-6px'}}>
           <img src="/kupid.png" alt="Kupid Logo" className="w-12 h-12 object-contain" />
+          {/* Floating hearts around Kupid */}
+          <div className="absolute -top-4 -left-2 animate-heart-shoot-1 pointer-events-none">
+            <svg className="w-3 h-3 text-pink-400" fill="currentColor" viewBox="0 0 20 20"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/></svg>
+          </div>
+          <div className="absolute -top-3 -right-2 animate-heart-shoot-2 pointer-events-none">
+            <svg className="w-3 h-3 text-pink-400" fill="currentColor" viewBox="0 0 20 20"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/></svg>
+          </div>
+          <div className="absolute -bottom-1 -left-3 animate-heart-shoot-3 pointer-events-none">
+            <svg className="w-3 h-3 text-pink-400" fill="currentColor" viewBox="0 0 20 20"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/></svg>
+          </div>
         </div>
         <div className="mb-2">&copy; {new Date().getFullYear()} Kupid Dating. All rights reserved.</div>
         <div className="flex justify-center gap-6 text-gray-500 text-sm mb-2">
@@ -568,9 +578,37 @@ export default function App() {
         .animate-slideup { animation: slideup 1.1s cubic-bezier(.4,0,.2,1); }
         @keyframes slideup { from { opacity: 0; transform: translateY(60px);} to { opacity: 1; transform: translateY(0);} }
         .animate-heart-float { animation: heartfloat 1.5s cubic-bezier(.4,0,.2,1) forwards; }
-        @keyframes heartfloat { 0% { opacity: 0; transform: translateY(0) scale(1);} 10% { opacity: 1;} 100% { opacity: 0; transform: translateY(-180px) scale(1.5);} }
+        @keyframes heartfloat { 0% { opacity: 0; transform: translateY(0) scale(0.5);} 10% { opacity: 1;} 100% { opacity: 0; transform: translateY(-180px) scale(1.5);} }
         .animate-float-heart { animation: floatheart 3.5s infinite alternate cubic-bezier(.4,0,.2,1); }
         @keyframes floatheart { from { transform: translateY(0) scale(1);} to { transform: translateY(-24px) scale(1.12);} }
+        .animate-kupid-magic { animation: kupidmagic 4s infinite ease-in-out; }
+        @keyframes kupidmagic { 
+          0% { transform: translateY(0) rotate(0deg); } 
+          10% { transform: translateY(-8px) rotate(360deg); } 
+          25% { transform: translateY(-15px) rotate(360deg); } 
+          40% { transform: translateY(-8px) rotate(360deg); } 
+          55% { transform: translateY(0) rotate(360deg); } 
+          85% { transform: translateY(0) rotate(360deg); } 
+          100% { transform: translateY(0) rotate(360deg); } 
+        }
+        .animate-heart-shoot-1 { animation: heartshoot1 4s infinite ease-out; }
+        @keyframes heartshoot1 { 
+          0%, 85%, 100% { opacity: 0; transform: translateY(0) translateX(0) scale(0.5); } 
+          15% { opacity: 1; transform: translateY(-20px) translateX(-15px) scale(1); } 
+          35% { opacity: 0; transform: translateY(-50px) translateX(-30px) scale(0.3); } 
+        }
+        .animate-heart-shoot-2 { animation: heartshoot2 4s infinite ease-out; }
+        @keyframes heartshoot2 { 
+          0%, 85%, 100% { opacity: 0; transform: translateY(0) translateX(0) scale(0.5); } 
+          20% { opacity: 1; transform: translateY(-25px) translateX(20px) scale(1.2); } 
+          45% { opacity: 0; transform: translateY(-60px) translateX(40px) scale(0.2); } 
+        }
+        .animate-heart-shoot-3 { animation: heartshoot3 4s infinite ease-out; }
+        @keyframes heartshoot3 { 
+          0%, 85%, 100% { opacity: 0; transform: translateY(0) translateX(0) scale(0.5); } 
+          25% { opacity: 1; transform: translateY(15px) translateX(-25px) scale(0.8); } 
+          50% { opacity: 0; transform: translateY(40px) translateX(-50px) scale(0.1); } 
+        }
       `}</style>
     </div>
   );
