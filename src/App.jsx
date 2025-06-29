@@ -97,6 +97,7 @@ export default function App() {
   const [error, setError] = useState("");
   const [cardAnim, setCardAnim] = useState(false);
   const [featureIdx, setFeatureIdx] = useState(0);
+  const [showcaseIdx, setShowcaseIdx] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
   const [studentCount, setStudentCount] = useState(0);
 
@@ -168,6 +169,27 @@ export default function App() {
     { code: "+233", country: "GH", flag: "🇬🇭" },
     { code: "+225", country: "CI", flag: "🇨🇮" },
     { code: "+221", country: "SN", flag: "🇸🇳" },
+  ];
+
+  const showcaseItems = [
+    {
+      type: "video",
+      src: "/video.mov",
+      alt: "Kupid App Video Preview",
+      title: "See Kupid in Action"
+    },
+    {
+      type: "image", 
+      src: "/uipic1.jpg",
+      alt: "Kupid App Interface Preview 1",
+      title: "Clean Interface Design"
+    },
+    {
+      type: "image",
+      src: "/uipic2.jpg", 
+      alt: "Kupid App Interface Preview 2",
+      title: "TikTok-Style Swiping"
+    }
   ];
 
   useEffect(() => {
@@ -365,19 +387,6 @@ export default function App() {
             </div>
           </div>
         </section>
-        {/* Showcase Section */}
-        <section className="w-full mt-8 mb-4">
-          <h2 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold mb-8 mt-8 text-center drop-shadow-sm">
-            <span className="bg-gradient-to-br from-[#ff5a8a] to-[#ffb6b6] bg-clip-text text-transparent">See What's Happening</span> <span className="text-black">on Kupid</span>
-          </h2>
-          <div className="flex flex-col gap-6">
-            {showcaseImages.map((img, i) => (
-              <div key={i} className="w-full bg-white rounded-2xl shadow-lg border border-gray-100 transition-transform duration-300 hover:scale-105 cursor-pointer overflow-hidden">
-                <img src={img.src} alt={img.alt} className="w-full h-48 object-cover" />
-              </div>
-            ))}
-          </div>
-        </section>
         {/* Testimonials Section */}
         <section className="w-full mt-16 mb-4">
           <h2 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold mb-8 mt-20 text-center drop-shadow-sm">
@@ -404,7 +413,7 @@ export default function App() {
             ))}
           </div>
         </section>
-        {/* Sneak Peek Section */}
+        {/* Sneak Peek Section (Swipeable Carousel) */}
         <section className="w-full flex flex-col items-center my-24 animate-fadein relative overflow-visible">
           {/* Animated background blob */}
           <div className="absolute -z-10 left-1/2 top-0 -translate-x-1/2 w-[420px] h-[320px] bg-gradient-to-br from-[#ffb6b6] via-[#ff5a8a] to-[#fff0f6] opacity-20 blur-3xl rounded-full" />
@@ -413,26 +422,61 @@ export default function App() {
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto text-center">Get a preview of the app that's about to change college dating</p>
           
-          <div className="flex flex-col gap-6 w-full max-w-sm">
+          <div className="relative max-w-sm mx-auto flex flex-col items-center">
             <div className="w-full bg-white rounded-3xl shadow-xl border border-gray-100 transition-transform duration-300 hover:scale-105 cursor-pointer overflow-hidden">
-              <video 
-                src="/video.mov" 
-                className="w-full h-auto object-contain"
-                controls
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
+              {showcaseItems[showcaseIdx].type === "video" ? (
+                <video 
+                  src={showcaseItems[showcaseIdx].src}
+                  className="w-full h-auto object-contain"
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <img 
+                  src={showcaseItems[showcaseIdx].src} 
+                  alt={showcaseItems[showcaseIdx].alt} 
+                  className="w-full h-auto object-contain" 
+                />
+              )}
+            </div>
+            
+            <div className="text-center mt-4 mb-6">
+              <h3 className="font-bold text-lg text-gray-900">{showcaseItems[showcaseIdx].title}</h3>
+            </div>
+
+            <div className="flex gap-10 items-center justify-center">
+              <button
+                className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 hover:bg-pink-100 text-gray-400 hover:text-pink-500 text-xl shadow transition disabled:opacity-40"
+                onClick={() => setShowcaseIdx((showcaseIdx - 1 + showcaseItems.length) % showcaseItems.length)}
+                aria-label="Previous Preview"
+                disabled={showcaseItems.length <= 1}
               >
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div className="w-full bg-white rounded-3xl shadow-xl border border-gray-100 transition-transform duration-300 hover:scale-105 cursor-pointer overflow-hidden">
-              <img src="/uipic1.jpg" alt="Kupid App Interface Preview 1" className="w-full h-auto object-contain" />
-            </div>
-            <div className="w-full bg-white rounded-3xl shadow-xl border border-gray-100 transition-transform duration-300 hover:scale-105 cursor-pointer overflow-hidden">
-              <img src="/uipic2.jpg" alt="Kupid App Interface Preview 2" className="w-full h-auto object-contain" />
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <div className="flex gap-3">
+                {showcaseItems.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`w-2 h-2 rounded-full transition-all duration-200 ${i === showcaseIdx ? 'bg-pink-500 scale-125' : 'bg-gray-300'}`}
+                    onClick={() => setShowcaseIdx(i)}
+                    aria-label={`Go to preview ${i + 1}`}
+                  />
+                ))}
+              </div>
+              <button
+                className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 hover:bg-pink-100 text-gray-400 hover:text-pink-500 text-xl shadow transition disabled:opacity-40"
+                onClick={() => setShowcaseIdx((showcaseIdx + 1) % showcaseItems.length)}
+                aria-label="Next Preview"
+                disabled={showcaseItems.length <= 1}
+              >
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+              </button>
             </div>
           </div>
         </section>
