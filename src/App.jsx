@@ -288,7 +288,9 @@ export default function App() {
           <h1 className="text-5xl xs:text-6xl font-extrabold mb-3 leading-tight bg-gradient-to-br from-[#ff5a8a] to-[#ffb6b6] bg-clip-text text-transparent drop-shadow-lg">Kupid Dating App</h1>
           <div className="text-xl xs:text-2xl font-semibold text-gray-900 mb-2">Where Gen Z Dates Live and Online</div>
           <div className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto mb-4 leading-relaxed">
-            <p>Kupid is the dating app built for Gen Z college students. We turn campuses into stages and dating into a full-blown experience. From viral live shows to a TikTok-style app, students can match, watch, and play their way into real connections. Born at UT Austin. Built by students. Tinder never pulled up to your lecture hall. We did. :)</p>
+            <p>Kupid is the dating app built for Gen Z college students. We turn campuses into stages and dating into a full-blown experience. From viral live shows to a TikTok-style app, students can match, watch, and play their way into real connections.</p>
+            <p className="mt-2">Born at UT Austin. Built by students.</p>
+            <p className="mt-2">Tinder never pulled up to your lecture hall. We did. :)</p>
           </div>
         </div>
         {/* Waitlist Form Card */}
