@@ -49,13 +49,6 @@ const testimonials = [
 const features = [
   {
     icon: (
-      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10h8M8 14h6"/></svg>
-    ),
-    title: "Onboarding & Account Setup",
-    desc: "Sign up with your phone number. Optionally verify with .edu for a student badge. Build your profile with 1–6 vertical videos, fun prompts, and campus details.",
-  },
-  {
-    icon: (
       <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="10" rx="3"/><circle cx="12" cy="12" r="3"/></svg>
     ),
     title: "Video Swiping",
@@ -73,7 +66,14 @@ const features = [
       <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
     ),
     title: "Live Events",
-    desc: "Join in-app ticketed events, livestreams, and campus games. Vote, play, and match with contestants. Premium users get exclusive access and replays.",
+    desc: "Join in-app ticketed events, livestreams, and campus games. Vote, play, and match with contestants in real life. IRL matching meets digital connection.",
+  },
+  {
+    icon: (
+      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+    ),
+    title: "Verified Campus Network",
+    desc: "Connect only with verified students from your university. .edu verification ensures authentic campus connections and builds trust in every match.",
   },
   {
     icon: (
@@ -84,10 +84,10 @@ const features = [
   },
   {
     icon: (
-      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
     ),
-    title: "Admin & Safety",
-    desc: "AI content moderation, report/block tools, verified badges, and first-date safety tips keep the community safe and authentic.",
+    title: "Viral Campus Culture",
+    desc: "From trending dances to campus memes, discover what's hot at your school. Share viral moments, join campus challenges, and become part of the culture.",
   },
 ];
 
