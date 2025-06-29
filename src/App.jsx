@@ -341,7 +341,7 @@ export default function App() {
           )}
         </div>
         {/* Features Section (carousel/slider, with relevant icons) */}
-        <section className="w-full my-16 bg-white">
+        <section className="w-full mt-24 mb-16 bg-white">
           <h2 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold mb-12 text-center drop-shadow-sm">
             <span className="bg-gradient-to-br from-[#ff5a8a] to-[#ffb6b6] bg-clip-text text-transparent">Why</span> <span className="text-black">Kupid?</span>
           </h2>
