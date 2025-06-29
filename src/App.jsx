@@ -422,7 +422,7 @@ export default function App() {
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto text-center">Get a preview of the app that's about to change college dating</p>
           
-          <div className="relative max-w-sm mx-auto flex flex-col items-center">
+          <div className="relative max-w-xs mx-auto flex flex-col items-center">
             <div className="w-full bg-white rounded-3xl shadow-xl border border-gray-100 transition-transform duration-300 hover:scale-105 cursor-pointer overflow-hidden">
               {showcaseItems[showcaseIdx].type === "video" ? (
                 <video 
