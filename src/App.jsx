@@ -422,43 +422,45 @@ export default function App() {
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto text-center">Get a preview of the app that's about to change college dating</p>
           
-          <div className="relative max-w-xs mx-auto flex flex-col items-center">
-            <div className="w-full bg-white rounded-3xl shadow-xl border border-gray-100 transition-transform duration-300 hover:scale-105 cursor-pointer overflow-hidden">
-              {showcaseItems[showcaseIdx].type === "video" ? (
-                <video 
-                  src={showcaseItems[showcaseIdx].src}
-                  className="w-full h-auto object-contain"
-                  controls
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                >
-                  Your browser does not support the video tag.
-                </video>
-              ) : (
-                <img 
-                  src={showcaseItems[showcaseIdx].src} 
-                  alt={showcaseItems[showcaseIdx].alt} 
-                  className="w-full h-auto object-contain" 
-                />
-              )}
-            </div>
-            
-            <div className="text-center mt-4 mb-6">
-              <h3 className="font-bold text-lg text-gray-900">{showcaseItems[showcaseIdx].title}</h3>
-            </div>
+          <div className="relative max-w-xs mx-auto flex items-center justify-center">
+            {/* Left Arrow */}
+            <button
+              className="absolute left-[-60px] w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 hover:bg-pink-100 text-gray-400 hover:text-pink-500 text-xl shadow transition disabled:opacity-40 z-10"
+              onClick={() => setShowcaseIdx((showcaseIdx - 1 + showcaseItems.length) % showcaseItems.length)}
+              aria-label="Previous Preview"
+              disabled={showcaseItems.length <= 1}
+            >
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+            </button>
 
-            <div className="flex gap-10 items-center justify-center">
-              <button
-                className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 hover:bg-pink-100 text-gray-400 hover:text-pink-500 text-xl shadow transition disabled:opacity-40"
-                onClick={() => setShowcaseIdx((showcaseIdx - 1 + showcaseItems.length) % showcaseItems.length)}
-                aria-label="Previous Preview"
-                disabled={showcaseItems.length <= 1}
-              >
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
-              </button>
+            <div className="flex flex-col items-center">
+              <div className="w-full bg-white rounded-3xl shadow-xl border border-gray-100 transition-transform duration-300 hover:scale-105 cursor-pointer overflow-hidden">
+                {showcaseItems[showcaseIdx].type === "video" ? (
+                  <video 
+                    src={showcaseItems[showcaseIdx].src}
+                    className="w-full h-auto object-contain"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <img 
+                    src={showcaseItems[showcaseIdx].src} 
+                    alt={showcaseItems[showcaseIdx].alt} 
+                    className="w-full h-auto object-contain" 
+                  />
+                )}
+              </div>
+              
+              <div className="text-center mt-4 mb-6">
+                <h3 className="font-bold text-lg text-gray-900">{showcaseItems[showcaseIdx].title}</h3>
+              </div>
+
+              {/* Dot Indicators */}
               <div className="flex gap-3">
                 {showcaseItems.map((_, i) => (
                   <button
@@ -469,15 +471,17 @@ export default function App() {
                   />
                 ))}
               </div>
-              <button
-                className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 hover:bg-pink-100 text-gray-400 hover:text-pink-500 text-xl shadow transition disabled:opacity-40"
-                onClick={() => setShowcaseIdx((showcaseIdx + 1) % showcaseItems.length)}
-                aria-label="Next Preview"
-                disabled={showcaseItems.length <= 1}
-              >
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-              </button>
             </div>
+
+            {/* Right Arrow */}
+            <button
+              className="absolute right-[-60px] w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 hover:bg-pink-100 text-gray-400 hover:text-pink-500 text-xl shadow transition disabled:opacity-40 z-10"
+              onClick={() => setShowcaseIdx((showcaseIdx + 1) % showcaseItems.length)}
+              aria-label="Next Preview"
+              disabled={showcaseItems.length <= 1}
+            >
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
           </div>
         </section>
         {/* Loved by X students animated counter bar */}
