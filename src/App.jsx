@@ -197,6 +197,16 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    // Preload showcase images for smooth transitions
+    showcaseItems.forEach(item => {
+      if (item.type === "image") {
+        const img = new Image();
+        img.src = item.src;
+      }
+    });
+  }, []);
+
+  useEffect(() => {
     // Animate student counter
     let start = 0;
     const end = 23000; // Updated to 23k
