@@ -507,7 +507,7 @@ export default function App() {
         <div className="absolute left-1/2 -translate-x-1/2 w-[420px] h-[320px] bg-gradient-to-br from-[#ffb6b6] via-[#ff5a8a] to-[#fff0f6] opacity-15 blur-3xl rounded-full top-0" style={{zIndex: -1}} />
       </main>
       <footer className="relative z-10 mt-16 text-gray-400 text-xs xs:text-sm text-center pb-6 border-t border-gray-100 pt-6 bg-white/80 overflow-visible">
-        <div className="absolute left-1/2 -translate-x-1/2 -top-10 animate-kupid-magic pointer-events-none" style={{marginLeft: '-6px'}}>
+        <div className="absolute left-1/2 -translate-x-1/2 -top-10 animate-kupid-magic pointer-events-none" style={{marginLeft: '-12px'}}>
           <img src="/kupid.png" alt="Kupid Logo" className="w-12 h-12 object-contain" />
           {/* Floating hearts around Kupid */}
           <div className="absolute -top-4 -left-2 animate-heart-shoot-1 pointer-events-none">
