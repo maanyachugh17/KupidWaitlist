@@ -341,8 +341,8 @@ export default function App() {
           )}
         </div>
         {/* Features Section (carousel/slider, with relevant icons) */}
-        <section className="w-full my-32 bg-white">
-          <h2 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold mb-20 text-center drop-shadow-sm">
+        <section className="w-full my-16 bg-white">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold mb-12 text-center drop-shadow-sm">
             <span className="bg-gradient-to-br from-[#ff5a8a] to-[#ffb6b6] bg-clip-text text-transparent">Why</span> <span className="text-black">Kupid?</span>
           </h2>
           <div className="relative max-w-2xl mx-auto flex flex-col items-center">
