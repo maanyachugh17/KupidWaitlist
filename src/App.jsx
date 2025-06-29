@@ -49,13 +49,6 @@ const testimonials = [
 const features = [
   {
     icon: (
-      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10h8M8 14h6"/></svg>
-    ),
-    title: "Onboarding & Account Setup",
-    desc: "Sign up with your phone number. Optionally verify with .edu for a student badge. Build your profile with 1–6 vertical videos, fun prompts, and campus details.",
-  },
-  {
-    icon: (
       <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="10" rx="3"/><circle cx="12" cy="12" r="3"/></svg>
     ),
     title: "Video Swiping",
@@ -72,8 +65,8 @@ const features = [
     icon: (
       <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
     ),
-    title: "Live Events",
-    desc: "Join in-app ticketed events, livestreams, and campus games. Vote, play, and match with contestants. Premium users get exclusive access and replays.",
+    title: "Live Events & IRL Matching",
+    desc: "Join in-app ticketed events, livestreams, and campus games. Vote, play, and match with contestants in real life. Premium users get exclusive access and replays.",
   },
   {
     icon: (
@@ -84,10 +77,17 @@ const features = [
   },
   {
     icon: (
-      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
     ),
-    title: "Admin & Safety",
-    desc: "AI content moderation, report/block tools, verified badges, and first-date safety tips keep the community safe and authentic.",
+    title: "Verified Campus Network",
+    desc: "Connect only with verified students from your school or nearby campuses. Student badges, .edu verification, and campus-exclusive events keep it authentic.",
+  },
+  {
+    icon: (
+      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+    ),
+    title: "Viral Campus Culture",
+    desc: "Create and participate in trending campus challenges, viral video prompts, and school spirit competitions. Make dating fun, not a chore.",
   },
 ];
 
@@ -134,8 +134,8 @@ export default function App() {
       return;
     }
     const digits = form.phone.replace(/\D/g, "");
-    if (digits.length < 10) {
-      setError("Please enter a valid phone number.");
+    if (digits.length < 7) {
+      setError("Please enter a valid phone number with area code.");
       return;
     }
 
@@ -179,12 +179,12 @@ export default function App() {
         {/* Hero Section */}
         <div className="mb-8 text-center">
           <h1 className="text-5xl xs:text-6xl font-extrabold mb-3 leading-tight bg-gradient-to-br from-[#ff5a8a] to-[#ffb6b6] bg-clip-text text-transparent drop-shadow-lg">Kupid Dating App</h1>
-          <div className="text-xl xs:text-2xl font-semibold text-gray-900 mb-2">TikTok-style Dating for College Students</div>
+          <div className="text-xl xs:text-2xl font-semibold text-gray-900 mb-2">Where Gen Z Dates Live and Online</div>
           <div className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto mb-4 leading-relaxed">
-            <p>KUPID is the all-in-one dating platform built for Gen Z.</p>
-            <p className="mt-2">We combine real-life energy with digital matchmaking — where students can match, watch, and participate in dating like never before. From viral campus events to an interactive app experience, we're creating the first dating ecosystem that lives both online and in person.</p>
-            <p className="mt-2">Born at UT Austin, KUPID is growing into a full-stack platform that blends culture, comedy, and connection — built by Gen Z, for Gen Z.</p>
-            <p className="mt-2 font-semibold text-gray-900">Let's be real — Tinder never pulled up to your econ class. We did.</p>
+            <p>Kupid is the dating app built for Gen Z college students.</p>
+            <p className="mt-2">We turn campuses into stages and dating into a full-blown experience. From viral live shows to a TikTok-style app, students can match, watch, and play their way into real connections.</p>
+            <p className="mt-2">Born at UT Austin. Built by students.</p>
+            <p className="mt-2 font-semibold text-gray-900">Tinder never pulled up to your lecture hall. We did. :)</p>
           </div>
         </div>
         {/* Waitlist Form Card */}
@@ -209,7 +209,7 @@ export default function App() {
                 className="px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-pink-400 outline-none text-lg bg-white placeholder-gray-400 shadow-sm transition-all duration-300 focus:scale-105"
                 type="tel"
                 name="phone"
-                placeholder="Your Phone Number"
+                placeholder="Your Phone Number (e.g. +1 512-555-0123)"
                 value={form.phone}
                 onChange={handleChange}
                 autoComplete="off"
@@ -230,7 +230,7 @@ export default function App() {
           )}
         </div>
         {/* Features Section (carousel/slider, with relevant icons) */}
-        <section className="w-full my-32 bg-white">
+        <section className="w-full my-20 bg-white">
           <h2 className="text-3xl xs:text-4xl sm:text-5xl font-extrabold mb-20 text-center drop-shadow-sm">
             <span className="bg-gradient-to-br from-[#ff5a8a] to-[#ffb6b6] bg-clip-text text-transparent">Why</span> <span className="text-black">Kupid?</span>
           </h2>
