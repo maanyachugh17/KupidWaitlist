@@ -100,6 +100,7 @@ export default function App() {
   const [showcaseIdx, setShowcaseIdx] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
   const [studentCount, setStudentCount] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const countryCodes = [
     { code: "+1", country: "US/CA", flag: "🇺🇸" },
@@ -236,6 +237,12 @@ export default function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Prevent duplicate submissions
+    if (isSubmitting || submitted) {
+      return;
+    }
+    
     if (!form.name || !form.phone) {
       setError("Please fill in both fields.");
       return;
@@ -246,10 +253,15 @@ export default function App() {
       return;
     }
 
-    // Prepare URL-encoded form data with full phone number
+    setIsSubmitting(true);
+    setError("");
+
+    // Prepare URL-encoded form data with full phone number and timestamp for duplicate detection
     const formData = new URLSearchParams();
-    formData.append("name", form.name);
-    formData.append("phone", `${form.countryCode} ${form.phone}`);
+    formData.append("name", form.name.trim());
+    formData.append("phone", `${form.countryCode} ${form.phone}`.trim());
+    formData.append("timestamp", new Date().toISOString());
+    formData.append("submission_id", `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
 
     fetch('https://script.google.com/macros/s/AKfycbzYoO8zW3jfMgp9UogyFsGy9JY-DTEoIv9daM_m1H7fB3O4d_JY8GsiuR_rOd7S_cxv/exec', {
       method: 'POST',
@@ -270,7 +282,10 @@ export default function App() {
       })
       .catch(err => {
         console.error('Submission error:', err);
-        setError('Submission failed. Please try again.');
+        setError('Network error. Please check your connection and try again.');
+      })
+      .finally(() => {
+        setIsSubmitting(false);
       });
   };
 
@@ -303,20 +318,22 @@ export default function App() {
           ) : (
             <form className="w-full flex flex-col gap-4" onSubmit={handleSubmit}>
               <input
-                className="px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-pink-400 outline-none text-lg bg-white placeholder-gray-400 shadow-sm transition-all duration-300 focus:scale-105"
+                className={`px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-pink-400 outline-none text-lg bg-white placeholder-gray-400 shadow-sm transition-all duration-300 focus:scale-105 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                 type="text"
                 name="name"
                 placeholder="Your Name"
                 value={form.name}
                 onChange={handleChange}
                 autoComplete="off"
+                disabled={isSubmitting}
               />
               <div className="flex gap-2 items-stretch">
                 <select
-                  className="flex-shrink-0 w-28 px-2 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-pink-400 outline-none text-sm bg-white shadow-sm transition-all duration-300 focus:scale-105"
+                  className={`flex-shrink-0 w-28 px-2 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-pink-400 outline-none text-sm bg-white shadow-sm transition-all duration-300 focus:scale-105 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                   name="countryCode"
                   value={form.countryCode}
                   onChange={handleCountryCodeChange}
+                  disabled={isSubmitting}
                 >
                   {countryCodes.map((code) => (
                     <option key={code.code} value={code.code}>
@@ -325,7 +342,7 @@ export default function App() {
                   ))}
                 </select>
                 <input
-                  className="flex-1 min-w-0 px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-pink-400 outline-none text-lg bg-white placeholder-gray-400 shadow-sm transition-all duration-300 focus:scale-105"
+                  className={`flex-1 min-w-0 px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-pink-400 outline-none text-lg bg-white placeholder-gray-400 shadow-sm transition-all duration-300 focus:scale-105 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                   type="tel"
                   name="phone"
                   placeholder="Phone Number"
@@ -334,17 +351,37 @@ export default function App() {
                   autoComplete="off"
                   inputMode="tel"
                   pattern="[0-9\-\+\s\(\)]*"
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="text-xs text-gray-500 mb-1">By joining, you agree to receive a one-time launch text from Kupid Dating.</div>
               {error && <div className="text-red-500 text-sm animate-shake">{error}</div>}
               <button
                 type="submit"
-                className="relative bg-gradient-to-br from-[#ff5a8a] via-[#ff7fa8] to-[#ffb6b6] text-white font-extrabold py-4 px-8 rounded-2xl text-xl shadow-xl mt-2 focus:ring-2 focus:ring-pink-400 active:scale-95 transition-all duration-300 overflow-hidden group hover:scale-105"
-                style={{boxShadow: '0 4px 32px 0 #ff5a8a55'}}
+                disabled={isSubmitting}
+                className={`relative text-white font-extrabold py-4 px-8 rounded-2xl text-xl shadow-xl mt-2 focus:ring-2 focus:ring-pink-400 transition-all duration-300 overflow-hidden group ${
+                  isSubmitting 
+                    ? 'bg-gray-400 cursor-not-allowed opacity-70' 
+                    : 'bg-gradient-to-br from-[#ff5a8a] via-[#ff7fa8] to-[#ffb6b6] active:scale-95 hover:scale-105'
+                }`}
+                style={!isSubmitting ? {boxShadow: '0 4px 32px 0 #ff5a8a55'} : {}}
               >
-                <span className="relative z-10">Join Waitlist</span>
-                <span className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{background: 'linear-gradient(90deg, #fff6, #fff0 60%)'}}></span>
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  {isSubmitting ? (
+                    <>
+                      <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                      </svg>
+                      Joining...
+                    </>
+                  ) : (
+                    'Join Waitlist'
+                  )}
+                </span>
+                {!isSubmitting && (
+                  <span className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{background: 'linear-gradient(90deg, #fff6, #fff0 60%)'}}></span>
+                )}
               </button>
             </form>
           )}
