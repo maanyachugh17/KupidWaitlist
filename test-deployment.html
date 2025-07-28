@@ -20,7 +20,7 @@
     <div id="noCorsResult"></div>
 
     <script>
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxzV4rU-y0EsVwRr_0tSozAaBfjvNdQr87NrA8gRGZ3YiYDq-u-A731egGtUdHnxmHw/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzLxnSLL_il5e1yQSad5Vxc6oCKqZMwb1hHavD5C0RxAnm5J0c2esoMHIzmg-MDxVkY/exec';
         
         async function testGet() {
             try {
@@ -37,9 +37,10 @@
             try {
                 document.getElementById('postResult').innerHTML = 'Testing...';
                 const formData = new URLSearchParams();
-                formData.append('action', 'send_code');
                 formData.append('name', 'Test User');
                 formData.append('phone', '+1234567890');
+                formData.append('timestamp', new Date().toISOString());
+                formData.append('submission_id', 'test123');
                 
                 const response = await fetch(SCRIPT_URL, {
                     method: 'POST',
@@ -59,9 +60,10 @@
             try {
                 document.getElementById('noCorsResult').innerHTML = 'Testing...';
                 const formData = new URLSearchParams();
-                formData.append('action', 'send_code');
                 formData.append('name', 'Test User');
                 formData.append('phone', '+1234567890');
+                formData.append('timestamp', new Date().toISOString());
+                formData.append('submission_id', 'test123');
                 
                 const response = await fetch(SCRIPT_URL, {
                     method: 'POST',

@@ -30,7 +30,6 @@ function App() {
     try {
       const response = await fetch('https://script.google.com/macros/s/AKfycbzLxnSLL_il5e1yQSad5Vxc6oCKqZMwb1hHavD5C0RxAnm5J0c2esoMHIzmg-MDxVkY/exec', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
@@ -42,9 +41,14 @@ function App() {
         })
       });
 
-      // Since mode: 'no-cors' doesn't return response data, we'll assume success
-      setMessage('Successfully added to waitlist!');
-      setFormData({ name: '', phone: '' });
+      const data = await response.json();
+      
+      if (data.result === 'success') {
+        setMessage('Successfully added to waitlist!');
+        setFormData({ name: '', phone: '' });
+      } else {
+        setMessage(data.message || 'Failed to join waitlist.');
+      }
     } catch (error) {
       console.error('Error:', error);
       setMessage('Network error. Please try again.');
