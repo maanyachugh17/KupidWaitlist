@@ -122,7 +122,7 @@ const VerificationForm = ({ onVerificationComplete }) => {
     formData.append("phone", `${form.countryCode} ${form.phone}`.trim());
 
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbxjwctkaXX8rp5i1iFVcI-7Jz2RlLN2u_IdEMj59wkLUoAnkgVgp1EirmojZXHMGUdq/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbyRO-4crziX7xy61s8Ztt_e6ZCh5YfZb79bPLYjIHpnWdDnBThHToHawkI1b8FPUwTE/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -161,7 +161,7 @@ const VerificationForm = ({ onVerificationComplete }) => {
     formData.append("code", verificationCode.trim());
 
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbxjwctkaXX8rp5i1iFVcI-7Jz2RlLN2u_IdEMj59wkLUoAnkgVgp1EirmojZXHMGUdq/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbyRO-4crziX7xy61s8Ztt_e6ZCh5YfZb79bPLYjIHpnWdDnBThHToHawkI1b8FPUwTE/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -194,7 +194,7 @@ const VerificationForm = ({ onVerificationComplete }) => {
     formData.append("submission_id", `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
 
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbxjwctkaXX8rp5i1iFVcI-7Jz2RlLN2u_IdEMj59wkLUoAnkgVgp1EirmojZXHMGUdq/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbyRO-4crziX7xy61s8Ztt_e6ZCh5YfZb79bPLYjIHpnWdDnBThHToHawkI1b8FPUwTE/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
