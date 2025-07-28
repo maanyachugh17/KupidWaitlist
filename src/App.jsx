@@ -263,7 +263,7 @@ export default function App() {
           // Use deployed server URL for production, localhost for development
           const apiUrl = window.location.hostname === 'localhost' 
             ? 'http://localhost:3001/api/submit'
-            : 'https://kupidwaitlist.onrender.com/api/submit';
+            : 'https://kupidwaitlist.onrender.com/api/submit'; // Deployed backend
           
           const response = await fetch(apiUrl, {
             method: 'POST',
