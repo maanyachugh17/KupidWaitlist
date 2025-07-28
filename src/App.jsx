@@ -28,7 +28,7 @@ function App() {
     setMessage('');
 
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbxzV4rU-y0EsVwRr_0tSozAaBfjvNdQr87NrA8gRGZ3YiYDq-u-A731egGtUdHnxmHw/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbzLxnSLL_il5e1yQSad5Vxc6oCKqZMwb1hHavD5C0RxAnm5J0c2esoMHIzmg-MDxVkY/exec', {
         method: 'POST',
         mode: 'no-cors',
         headers: {
