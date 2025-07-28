@@ -118,7 +118,7 @@ const VerificationForm = ({ onVerificationComplete }) => {
 
     const formData = new URLSearchParams();
     try {
-      const response = await fetch('https://api.allorigins.win/raw?url=https://script.google.com/macros/s/AKfycbzsqLzg1KM1rabsesMQOifWi-ZFSEEb6wvkZ6Uq25W4yOj1v6mviFMx0TkSZw_lTrzl/exec', {
+      const response = await fetch('https://api.allorigins.win/raw?url=https://script.google.com/macros/s/AKfycbwyLh7TVsCWNG8cy7gYAZnnXWJ3zv-L7-2GD47LWQNg7OuRKHwxMGwys4L0uFliKNEQ/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -156,7 +156,7 @@ const VerificationForm = ({ onVerificationComplete }) => {
     setError("");
 
     try {
-      const response = await fetch('https://api.allorigins.win/raw?url=https://script.google.com/macros/s/AKfycbzsqLzg1KM1rabsesMQOifWi-ZFSEEb6wvkZ6Uq25W4yOj1v6mviFMx0TkSZw_lTrzl/exec', {
+      const response = await fetch('https://api.allorigins.win/raw?url=https://script.google.com/macros/s/AKfycbwyLh7TVsCWNG8cy7gYAZnnXWJ3zv-L7-2GD47LWQNg7OuRKHwxMGwys4L0uFliKNEQ/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -186,7 +186,7 @@ const VerificationForm = ({ onVerificationComplete }) => {
 
   const submitToWaitlist = async () => {
     try {
-      const response = await fetch('https://api.allorigins.win/raw?url=https://script.google.com/macros/s/AKfycbzsqLzg1KM1rabsesMQOifWi-ZFSEEb6wvkZ6Uq25W4yOj1v6mviFMx0TkSZw_lTrzl/exec', {
+      const response = await fetch('https://api.allorigins.win/raw?url=https://script.google.com/macros/s/AKfycbwyLh7TVsCWNG8cy7gYAZnnXWJ3zv-L7-2GD47LWQNg7OuRKHwxMGwys4L0uFliKNEQ/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
