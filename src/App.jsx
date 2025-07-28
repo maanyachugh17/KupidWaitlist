@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import VerificationForm from './VerificationForm';
 
 const founderCopy = [
   "Dating hasn't changed in over a decade.",
@@ -101,6 +102,9 @@ export default function App() {
   const [showConfetti, setShowConfetti] = useState(false);
   const [studentCount, setStudentCount] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // 🛑 PAUSE CONTROL - Set to true to pause waitlist
+  const [isPaused, setIsPaused] = useState(false);
 
   const countryCodes = [
     { code: "+1", country: "US/CA", flag: "🇺🇸" },
@@ -263,7 +267,7 @@ export default function App() {
     formData.append("timestamp", new Date().toISOString());
     formData.append("submission_id", `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
 
-    fetch('https://script.google.com/macros/s/AKfycbzYoO8zW3jfMgp9UogyFsGy9JY-DTEoIv9daM_m1H7fB3O4d_JY8GsiuR_rOd7S_cxv/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbwLWrR0WLs0XC3Baip79wNxxad_1hXK-9pb95WkQ-3e6YJPwV47CVZAEE5WBlmothXg/exec', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -310,80 +314,31 @@ export default function App() {
         </div>
         {/* Waitlist Form Card */}
         <div className={`w-full max-w-md bg-white rounded-3xl shadow-xl p-6 xs:p-8 flex flex-col items-center border border-gray-100 transition-all duration-700 ${cardAnim ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}>
-          {submitted ? (
+          {isPaused ? (
+            <div className="text-center animate-fadein">
+              <div className="w-16 h-16 mx-auto mb-4 bg-orange-100 rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                  <rect x="8" y="4" width="2" height="16" rx="1"/>
+                  <rect x="14" y="4" width="2" height="16" rx="1"/>
+                </svg>
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-2">Waitlist Temporarily Paused</h2>
+              <p className="text-gray-600 mb-4">We're currently at capacity and have paused new signups.</p>
+              <p className="text-sm text-gray-500">Follow us on social media for updates on when we reopen!</p>
+              <div className="mt-6 text-center">
+                <p className="text-lg font-semibold text-gray-700">{studentCount.toLocaleString()}+ students already signed up</p>
+              </div>
+            </div>
+          ) : submitted ? (
             <div className="text-center animate-fadein">
               <h2 className="text-2xl font-semibold text-green-600 mb-2">Thank you!</h2>
               <p className="text-gray-700">You're on the list. We'll keep you posted! 💌</p>
             </div>
           ) : (
-            <form className="w-full flex flex-col gap-4" onSubmit={handleSubmit}>
-              <input
-                className={`px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-pink-400 outline-none text-lg bg-white placeholder-gray-400 shadow-sm transition-all duration-300 focus:scale-105 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                value={form.name}
-                onChange={handleChange}
-                autoComplete="off"
-                disabled={isSubmitting}
-              />
-              <div className="flex gap-2 items-stretch">
-                <select
-                  className={`flex-shrink-0 w-28 px-2 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-pink-400 outline-none text-sm bg-white shadow-sm transition-all duration-300 focus:scale-105 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
-                  name="countryCode"
-                  value={form.countryCode}
-                  onChange={handleCountryCodeChange}
-                  disabled={isSubmitting}
-                >
-                  {countryCodes.map((code) => (
-                    <option key={code.code} value={code.code}>
-                      {code.flag} {code.code}
-                    </option>
-                  ))}
-                </select>
-                <input
-                  className={`flex-1 min-w-0 px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-pink-400 outline-none text-lg bg-white placeholder-gray-400 shadow-sm transition-all duration-300 focus:scale-105 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone Number"
-                  value={form.phone}
-                  onChange={handleChange}
-                  autoComplete="off"
-                  inputMode="tel"
-                  pattern="[0-9\-\+\s\(\)]*"
-                  disabled={isSubmitting}
-                />
-              </div>
-              <div className="text-xs text-gray-500 mb-1">By joining, you agree to receive a one-time launch text from Kupid Dating.</div>
-              {error && <div className="text-red-500 text-sm animate-shake">{error}</div>}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`relative text-white font-extrabold py-4 px-8 rounded-2xl text-xl shadow-xl mt-2 focus:ring-2 focus:ring-pink-400 transition-all duration-300 overflow-hidden group ${
-                  isSubmitting 
-                    ? 'bg-gray-400 cursor-not-allowed opacity-70' 
-                    : 'bg-gradient-to-br from-[#ff5a8a] via-[#ff7fa8] to-[#ffb6b6] active:scale-95 hover:scale-105'
-                }`}
-                style={!isSubmitting ? {boxShadow: '0 4px 32px 0 #ff5a8a55'} : {}}
-              >
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  {isSubmitting ? (
-                    <>
-                      <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
-                      </svg>
-                      Joining...
-                    </>
-                  ) : (
-                    'Join Waitlist'
-                  )}
-                </span>
-                {!isSubmitting && (
-                  <span className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{background: 'linear-gradient(90deg, #fff6, #fff0 60%)'}}></span>
-                )}
-              </button>
-            </form>
+            <VerificationForm onVerificationComplete={() => {
+              setShowConfetti(true);
+              setTimeout(() => setShowConfetti(false), 1800);
+            }} />
           )}
         </div>
         {/* Sneak Peek Section (Swipeable Carousel) - MOVED ABOVE FEATURES */}
