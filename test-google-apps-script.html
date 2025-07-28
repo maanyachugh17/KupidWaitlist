@@ -7,12 +7,13 @@
     <h1>Test Google Apps Script</h1>
     <button onclick="testGet()">Test GET Request</button>
     <button onclick="testPost()">Test POST Request</button>
+    <button onclick="testSendCode()">Test Send Code</button>
     <div id="result"></div>
 
     <script>
         async function testGet() {
             try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbwyLh7TVsCWNG8cy7gYAZnnXWJ3zv-L7-2GD47LWQNg7OuRKHwxMGwys4L0uFliKNEQ/exec');
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxzV4rU-y0EsVwRr_0tSozAaBfjvNdQr87NrA8gRGZ3YiYDq-u-A731egGtUdHnxmHw/exec');
                 const data = await response.text();
                 document.getElementById('result').innerHTML = '<h3>GET Response:</h3><pre>' + data + '</pre>';
             } catch (error) {
@@ -27,7 +28,7 @@
                 formData.append('name', 'Test User');
                 formData.append('phone', '+1234567890');
 
-                const response = await fetch('https://script.google.com/macros/s/AKfycbwyLh7TVsCWNG8cy7gYAZnnXWJ3zv-L7-2GD47LWQNg7OuRKHwxMGwys4L0uFliKNEQ/exec', {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxzV4rU-y0EsVwRr_0tSozAaBfjvNdQr87NrA8gRGZ3YiYDq-u-A731egGtUdHnxmHw/exec', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
@@ -38,6 +39,27 @@
                 document.getElementById('result').innerHTML = '<h3>POST Response:</h3><pre>' + data + '</pre>';
             } catch (error) {
                 document.getElementById('result').innerHTML = '<h3>POST Error:</h3><pre>' + error.message + '</pre>';
+            }
+        }
+
+        async function testSendCode() {
+            try {
+                const formData = new URLSearchParams();
+                formData.append('action', 'send_code');
+                formData.append('name', 'Test User');
+                formData.append('phone', '+1234567890');
+
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxzV4rU-y0EsVwRr_0tSozAaBfjvNdQr87NrA8gRGZ3YiYDq-u-A731egGtUdHnxmHw/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData
+                });
+                document.getElementById('result').innerHTML = '<h3>Send Code Response:</h3><pre>Request sent with no-cors mode</pre>';
+            } catch (error) {
+                document.getElementById('result').innerHTML = '<h3>Send Code Error:</h3><pre>' + error.message + '</pre>';
             }
         }
     </script>

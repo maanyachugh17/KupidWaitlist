@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Google Apps Script Deployment</title>
+</head>
+<body>
+    <h1>Test Google Apps Script Deployment</h1>
+    <p>This will help verify if your deployment is working correctly.</p>
+    
+    <h2>Step 1: Test GET Request</h2>
+    <button onclick="testGet()">Test GET</button>
+    <div id="getResult"></div>
+    
+    <h2>Step 2: Test POST Request</h2>
+    <button onclick="testPost()">Test POST</button>
+    <div id="postResult"></div>
+    
+    <h2>Step 3: Test with no-cors</h2>
+    <button onclick="testNoCors()">Test no-cors</button>
+    <div id="noCorsResult"></div>
+
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxzV4rU-y0EsVwRr_0tSozAaBfjvNdQr87NrA8gRGZ3YiYDq-u-A731egGtUdHnxmHw/exec';
+        
+        async function testGet() {
+            try {
+                document.getElementById('getResult').innerHTML = 'Testing...';
+                const response = await fetch(SCRIPT_URL);
+                const data = await response.text();
+                document.getElementById('getResult').innerHTML = '<pre>' + data + '</pre>';
+            } catch (error) {
+                document.getElementById('getResult').innerHTML = '<pre style="color: red;">Error: ' + error.message + '</pre>';
+            }
+        }
+        
+        async function testPost() {
+            try {
+                document.getElementById('postResult').innerHTML = 'Testing...';
+                const formData = new URLSearchParams();
+                formData.append('action', 'send_code');
+                formData.append('name', 'Test User');
+                formData.append('phone', '+1234567890');
+                
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData
+                });
+                const data = await response.text();
+                document.getElementById('postResult').innerHTML = '<pre>' + data + '</pre>';
+            } catch (error) {
+                document.getElementById('postResult').innerHTML = '<pre style="color: red;">Error: ' + error.message + '</pre>';
+            }
+        }
+        
+        async function testNoCors() {
+            try {
+                document.getElementById('noCorsResult').innerHTML = 'Testing...';
+                const formData = new URLSearchParams();
+                formData.append('action', 'send_code');
+                formData.append('name', 'Test User');
+                formData.append('phone', '+1234567890');
+                
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData
+                });
+                document.getElementById('noCorsResult').innerHTML = '<pre style="color: green;">Request sent with no-cors mode</pre>';
+            } catch (error) {
+                document.getElementById('noCorsResult').innerHTML = '<pre style="color: red;">Error: ' + error.message + '</pre>';
+            }
+        }
+    </script>
+</body>
+</html> 
