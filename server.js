@@ -55,6 +55,14 @@ function normalizePhone(phone) {
 }
 
 // Routes
+app.get('/', (req, res) => {
+  res.json({ 
+    result: 'success', 
+    message: 'Kupid Waitlist API is running!',
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.get('/api/health', (req, res) => {
   res.json({ 
     result: 'success', 
@@ -186,4 +194,7 @@ app.listen(PORT, () => {
   console.log(`🚀 Kupid Waitlist server running on port ${PORT}`);
   console.log(`📊 Data file: ${dataFile}`);
   console.log(`🌐 Health check: http://localhost:${PORT}/api/health`);
+}).on('error', (error) => {
+  console.error('Server error:', error);
+  process.exit(1);
 }); 
