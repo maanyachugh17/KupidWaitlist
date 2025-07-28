@@ -118,7 +118,7 @@ const VerificationForm = ({ onVerificationComplete }) => {
 
     const formData = new URLSearchParams();
     try {
-      const response = await fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbxzV4rU-y0EsVwRr_0tSozAaBfjvNdQr87NrA8gRGZ3YiYDq-u-A731egGtUdHnxmHw/exec', {
+      const response = await fetch('https://api.allorigins.win/raw?url=https://script.google.com/macros/s/AKfycbxzV4rU-y0EsVwRr_0tSozAaBfjvNdQr87NrA8gRGZ3YiYDq-u-A731egGtUdHnxmHw/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -156,7 +156,7 @@ const VerificationForm = ({ onVerificationComplete }) => {
     setError("");
 
     try {
-      const response = await fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbxzV4rU-y0EsVwRr_0tSozAaBfjvNdQr87NrA8gRGZ3YiYDq-u-A731egGtUdHnxmHw/exec', {
+      const response = await fetch('https://api.allorigins.win/raw?url=https://script.google.com/macros/s/AKfycbxzV4rU-y0EsVwRr_0tSozAaBfjvNdQr87NrA8gRGZ3YiYDq-u-A731egGtUdHnxmHw/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -186,7 +186,7 @@ const VerificationForm = ({ onVerificationComplete }) => {
 
   const submitToWaitlist = async () => {
     try {
-      const response = await fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbxzV4rU-y0EsVwRr_0tSozAaBfjvNdQr87NrA8gRGZ3YiYDq-u-A731egGtUdHnxmHw/exec', {
+      const response = await fetch('https://api.allorigins.win/raw?url=https://script.google.com/macros/s/AKfycbxzV4rU-y0EsVwRr_0tSozAaBfjvNdQr87NrA8gRGZ3YiYDq-u-A731egGtUdHnxmHw/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
