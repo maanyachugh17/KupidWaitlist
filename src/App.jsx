@@ -259,23 +259,21 @@ export default function App() {
     setIsSubmitting(true);
     setError("");
 
-    // Prepare URL-encoded form data with full phone number and timestamp for duplicate detection
-    const formData = new URLSearchParams();
-    formData.append("name", form.name.trim());
-    formData.append("phone", `${form.countryCode} ${form.phone}`.trim());
-    formData.append("timestamp", new Date().toISOString());
-    formData.append("submission_id", `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
+            try {
+          const response = await fetch('http://localhost:3001/api/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name: form.name.trim(),
+              phone: `${form.countryCode} ${form.phone}`.trim(),
+              timestamp: new Date().toISOString(),
+              submission_id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+            })
+          });
 
-    try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbzLxnSLL_il5e1yQSad5Vxc6oCKqZMwb1hHavD5C0RxAnm5J0c2esoMHIzmg-MDxVkY/exec', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formData
-      });
-      
-      const data = await response.json();
+          const data = await response.json();
       
       if (data.result === 'success') {
         setSubmitted(true);

@@ -1,0 +1,33 @@
+{
+  "submissions": [
+    {
+      "id": "test123",
+      "name": "Test User",
+      "phone": "+1 555-123-4567",
+      "timestamp": "2025-07-28T04:13:26.806Z",
+      "submittedAt": "2025-07-28T04:13:29.691Z"
+    },
+    {
+      "id": "1753676162978-3iirqqcj5",
+      "name": "Test User 2",
+      "phone": "+1 555-987-6543",
+      "timestamp": "2025-07-28T04:16:02.978Z",
+      "submittedAt": "2025-07-28T04:16:02.978Z"
+    },
+    {
+      "id": "1753676324549-cl3kcboxd",
+      "name": "Test User 3",
+      "phone": "+1 555-111-2222",
+      "timestamp": "2025-07-28T04:18:44.549Z",
+      "submittedAt": "2025-07-28T04:18:44.549Z"
+    },
+    {
+      "id": "1753676398463-r2iao5ljw",
+      "name": "Maanya Chugh",
+      "phone": "+1 8486672427",
+      "timestamp": "2025-07-28T04:19:58.463Z",
+      "submittedAt": "2025-07-28T04:19:58.486Z"
+    }
+  ],
+  "lastUpdated": "2025-07-28T04:19:58.486Z"
+}
