@@ -118,7 +118,7 @@ const VerificationForm = ({ onVerificationComplete }) => {
 
     const formData = new URLSearchParams();
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbwXmqZD4ldWV0ze42RTD4wzmsuw0edmj9E5WcoaS_QbUmB-87EvoZXfuZthR84zsnrr/exec', {
+      const response = await fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbwXmqZD4ldWV0ze42RTD4wzmsuw0edmj9E5WcoaS_QbUmB-87EvoZXfuZthR84zsnrr/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -156,7 +156,7 @@ const VerificationForm = ({ onVerificationComplete }) => {
     setError("");
 
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbwXmqZD4ldWV0ze42RTD4wzmsuw0edmj9E5WcoaS_QbUmB-87EvoZXfuZthR84zsnrr/exec', {
+      const response = await fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbwXmqZD4ldWV0ze42RTD4wzmsuw0edmj9E5WcoaS_QbUmB-87EvoZXfuZthR84zsnrr/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -186,7 +186,7 @@ const VerificationForm = ({ onVerificationComplete }) => {
 
   const submitToWaitlist = async () => {
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbwXmqZD4ldWV0ze42RTD4wzmsuw0edmj9E5WcoaS_QbUmB-87EvoZXfuZthR84zsnrr/exec', {
+      const response = await fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbwXmqZD4ldWV0ze42RTD4wzmsuw0edmj9E5WcoaS_QbUmB-87EvoZXfuZthR84zsnrr/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
