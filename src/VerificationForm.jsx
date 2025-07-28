@@ -117,17 +117,17 @@ const VerificationForm = ({ onVerificationComplete }) => {
     setError("");
 
     const formData = new URLSearchParams();
-    formData.append("action", "send_code");
-    formData.append("name", form.name.trim());
-    formData.append("phone", `${form.countryCode} ${form.phone}`.trim());
-
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbyRO-4crziX7xy61s8Ztt_e6ZCh5YfZb79bPLYjIHpnWdDnBThHToHawkI1b8FPUwTE/exec', {
+      const response = await fetch('https://api.allorigins.win/raw?url=https://script.google.com/macros/s/AKfycbzsqLzg1KM1rabsesMQOifWi-ZFSEEb6wvkZ6Uq25W4yOj1v6mviFMx0TkSZw_lTrzl/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: formData
+        body: new URLSearchParams({
+          action: 'send_code',
+          name: form.name.trim(),
+          phone: `${form.countryCode} ${form.phone}`.trim()
+        })
       });
 
       const data = await response.json();
@@ -155,18 +155,17 @@ const VerificationForm = ({ onVerificationComplete }) => {
     setIsLoading(true);
     setError("");
 
-    const formData = new URLSearchParams();
-    formData.append("action", "verify_code");
-    formData.append("phone", `${form.countryCode} ${form.phone}`.trim());
-    formData.append("code", verificationCode.trim());
-
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbyRO-4crziX7xy61s8Ztt_e6ZCh5YfZb79bPLYjIHpnWdDnBThHToHawkI1b8FPUwTE/exec', {
+      const response = await fetch('https://api.allorigins.win/raw?url=https://script.google.com/macros/s/AKfycbzsqLzg1KM1rabsesMQOifWi-ZFSEEb6wvkZ6Uq25W4yOj1v6mviFMx0TkSZw_lTrzl/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: formData
+        body: new URLSearchParams({
+          action: 'verify_code',
+          phone: `${form.countryCode} ${form.phone}`.trim(),
+          code: verificationCode.trim()
+        })
       });
 
       const data = await response.json();
@@ -186,20 +185,19 @@ const VerificationForm = ({ onVerificationComplete }) => {
   };
 
   const submitToWaitlist = async () => {
-    const formData = new URLSearchParams();
-    formData.append("action", "submit_waitlist");
-    formData.append("name", form.name.trim());
-    formData.append("phone", `${form.countryCode} ${form.phone}`.trim());
-    formData.append("timestamp", new Date().toISOString());
-    formData.append("submission_id", `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
-
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbyRO-4crziX7xy61s8Ztt_e6ZCh5YfZb79bPLYjIHpnWdDnBThHToHawkI1b8FPUwTE/exec', {
+      const response = await fetch('https://api.allorigins.win/raw?url=https://script.google.com/macros/s/AKfycbzsqLzg1KM1rabsesMQOifWi-ZFSEEb6wvkZ6Uq25W4yOj1v6mviFMx0TkSZw_lTrzl/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: formData
+        body: new URLSearchParams({
+          action: 'submit_waitlist',
+          name: form.name.trim(),
+          phone: `${form.countryCode} ${form.phone}`.trim(),
+          timestamp: new Date().toISOString(),
+          submission_id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+        })
       });
 
       const data = await response.json();

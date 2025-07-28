@@ -2,25 +2,36 @@
 // Replace your entire Google Apps Script with this code
 
 function doGet(e) {
-  var output = ContentService.createTextOutput(
+  return ContentService.createTextOutput(
     JSON.stringify({ 
       result: "success", 
       message: "Kupid Waitlist API is running. Use POST to submit data." 
     })
-  );
-  output.setMimeType(ContentService.MimeType.JSON);
-  return output;
+  )
+  .setMimeType(ContentService.MimeType.JSON)
+  .setHeader('Access-Control-Allow-Origin', '*')
+  .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+  .setHeader('Access-Control-Allow-Headers', 'Content-Type');
 }
 
 function doPost(e) {
+  // Handle CORS preflight requests
+  if (e.parameter && e.parameter.action === 'OPTIONS') {
+    return ContentService.createTextOutput('')
+      .setMimeType(ContentService.MimeType.TEXT)
+      .setHeader('Access-Control-Allow-Origin', '*')
+      .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+      .setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  }
+
   try {
     // Check if we have parameters
     if (!e || !e.parameter) {
-      var errorOutput = ContentService.createTextOutput(
+      return ContentService.createTextOutput(
         JSON.stringify({ result: "error", message: "No parameters provided" })
-      );
-      errorOutput.setMimeType(ContentService.MimeType.JSON);
-      return errorOutput;
+      )
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*');
     }
 
     var action = e.parameter.action;
@@ -32,18 +43,18 @@ function doPost(e) {
     } else if (action === 'submit_waitlist') {
       return handleSubmitWaitlist(e);
     } else {
-      var invalidOutput = ContentService.createTextOutput(
+      return ContentService.createTextOutput(
         JSON.stringify({ result: "error", message: "Invalid action" })
-      );
-      invalidOutput.setMimeType(ContentService.MimeType.JSON);
-      return invalidOutput;
+      )
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*');
     }
   } catch (error) {
-    var errorOutput = ContentService.createTextOutput(
+    return ContentService.createTextOutput(
       JSON.stringify({ result: "error", message: "Server error: " + error.toString() })
-    );
-    errorOutput.setMimeType(ContentService.MimeType.JSON);
-    return errorOutput;
+    )
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader('Access-Control-Allow-Origin', '*');
   }
 }
 
@@ -53,23 +64,25 @@ function handleSendCode(e) {
     var phone = e.parameter.phone;
     
     if (!name || !phone) {
-      var errorOutput = ContentService.createTextOutput(
+      return ContentService.createTextOutput(
         JSON.stringify({ success: false, message: "Name and phone are required" })
-      );
-      errorOutput.setMimeType(ContentService.MimeType.JSON);
-      return errorOutput;
+      )
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*');
     }
     
     var result = sendVerificationCode(phone, name);
-    var output = ContentService.createTextOutput(JSON.stringify(result));
-    output.setMimeType(ContentService.MimeType.JSON);
-    return output;
+    return ContentService.createTextOutput(
+      JSON.stringify(result)
+    )
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader('Access-Control-Allow-Origin', '*');
   } catch (error) {
-    var errorOutput = ContentService.createTextOutput(
+    return ContentService.createTextOutput(
       JSON.stringify({ success: false, message: "Error sending code: " + error.toString() })
-    );
-    errorOutput.setMimeType(ContentService.MimeType.JSON);
-    return errorOutput;
+    )
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader('Access-Control-Allow-Origin', '*');
   }
 }
 
@@ -79,23 +92,25 @@ function handleVerifyCode(e) {
     var code = e.parameter.code;
     
     if (!phone || !code) {
-      var errorOutput = ContentService.createTextOutput(
+      return ContentService.createTextOutput(
         JSON.stringify({ success: false, message: "Phone and code are required" })
-      );
-      errorOutput.setMimeType(ContentService.MimeType.JSON);
-      return errorOutput;
+      )
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*');
     }
     
     var result = verifyCode(phone, code);
-    var output = ContentService.createTextOutput(JSON.stringify(result));
-    output.setMimeType(ContentService.MimeType.JSON);
-    return output;
+    return ContentService.createTextOutput(
+      JSON.stringify(result)
+    )
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader('Access-Control-Allow-Origin', '*');
   } catch (error) {
-    var errorOutput = ContentService.createTextOutput(
+    return ContentService.createTextOutput(
       JSON.stringify({ success: false, message: "Error verifying code: " + error.toString() })
-    );
-    errorOutput.setMimeType(ContentService.MimeType.JSON);
-    return errorOutput;
+    )
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader('Access-Control-Allow-Origin', '*');
   }
 }
 
@@ -108,11 +123,11 @@ function handleSubmitWaitlist(e) {
     var submissionId = e.parameter.submission_id;
     
     if (!name || !phone) {
-      var errorOutput = ContentService.createTextOutput(
+      return ContentService.createTextOutput(
         JSON.stringify({ result: "error", message: "Name and phone are required" })
-      );
-      errorOutput.setMimeType(ContentService.MimeType.JSON);
-      return errorOutput;
+      )
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*');
     }
     
     // Trim whitespace
@@ -128,11 +143,11 @@ function handleSubmitWaitlist(e) {
       if (data[i][2]) {
         var existingPhone = String(data[i][2]).replace(/[\s\-\(\)]/g, '');
         if (existingPhone === normalizedPhone) {
-          var errorOutput = ContentService.createTextOutput(
+          return ContentService.createTextOutput(
             JSON.stringify({ result: "error", message: "This phone number is already registered!" })
-          );
-          errorOutput.setMimeType(ContentService.MimeType.JSON);
-          return errorOutput;
+          )
+          .setMimeType(ContentService.MimeType.JSON)
+          .setHeader('Access-Control-Allow-Origin', '*');
         }
       }
     }
@@ -148,17 +163,17 @@ function handleSubmitWaitlist(e) {
     
     console.log('New waitlist signup: ' + name + ' - ' + phone);
     
-    var output = ContentService.createTextOutput(
+    return ContentService.createTextOutput(
       JSON.stringify({ result: "success", message: "Successfully added to waitlist!" })
-    );
-    output.setMimeType(ContentService.MimeType.JSON);
-    return output;
+    )
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader('Access-Control-Allow-Origin', '*');
   } catch (error) {
-    var errorOutput = ContentService.createTextOutput(
+    return ContentService.createTextOutput(
       JSON.stringify({ result: "error", message: "Server error: " + error.toString() })
-    );
-    errorOutput.setMimeType(ContentService.MimeType.JSON);
-    return errorOutput;
+    )
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader('Access-Control-Allow-Origin', '*');
   }
 }
 
