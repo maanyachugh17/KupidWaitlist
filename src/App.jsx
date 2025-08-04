@@ -49,42 +49,42 @@ const testimonials = [
 const features = [
   {
     icon: (
-      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="10" rx="3"/><circle cx="12" cy="12" r="3"/></svg>
+      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="10" rx="3" /><circle cx="12" cy="12" r="3" /></svg>
     ),
     title: "Video Swiping",
     desc: "Infinite TikTok-style feed. Swipe up for next video, right to like (with a message), left to dislike, down to skip. Double-tap for Super Like (Premium). Auto-play, captions, and school tags included.",
   },
   {
     icon: (
-      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="5"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg>
+      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="5" /><path d="M8 12h.01M12 12h.01M16 12h.01" /></svg>
     ),
     title: "Matching & Messaging",
     desc: "Mutual likes connect instantly. Chat with text, emoji, voice, or video (5-min cap free). Unlock streaks, badges, and local date discounts by staying active.",
   },
   {
     icon: (
-      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M12 8v4l3 3" /><circle cx="12" cy="12" r="10" /></svg>
     ),
     title: "Live Events",
     desc: "Join in-app ticketed events, livestreams, and campus games. Vote, play, and match with contestants in real life. IRL matching meets digital connection.",
   },
   {
     icon: (
-      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4" /><circle cx="12" cy="12" r="10" /></svg>
     ),
     title: "Verified Campus Network",
     desc: "Connect only with verified students from your university. .edu verification ensures authentic campus connections and builds trust in every match.",
   },
   {
     icon: (
-      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M12 21c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9zm0-13c-2.21 0-4 1.79-4 4 0 1.66 1.34 3 3 3s3-1.34 3-3c0-2.21-1.79-4-4-4z"/><path d="M12 17v2"/></svg>
+      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M12 21c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9zm0-13c-2.21 0-4 1.79-4 4 0 1.66 1.34 3 3 3s3-1.34 3-3c0-2.21-1.79-4-4-4z" /><path d="M12 17v2" /></svg>
     ),
     title: "Kupid Hearts",
     desc: "Earn hearts for daily logins, profile completion, uploads, referrals, and event activity. Spend on boosts, superlikes, gifts, and date discounts.",
   },
   {
     icon: (
-      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      <svg className="w-16 h-16 text-gray-900" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
     ),
     title: "Viral Campus Culture",
     desc: "From trending dances to campus memes, discover what's hot at your school. Share viral moments, join campus challenges, and become part of the culture.",
@@ -101,7 +101,7 @@ export default function App() {
   const [showConfetti, setShowConfetti] = useState(false);
   const [studentCount, setStudentCount] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   // 🛑 PAUSE CONTROL - Set to true to pause waitlist
   const [isPaused, setIsPaused] = useState(false);
 
@@ -183,14 +183,14 @@ export default function App() {
       title: "See Kupid in Action"
     },
     {
-      type: "image", 
+      type: "image",
       src: "/uipic1.jpg",
       alt: "Kupid App Interface Preview 1",
       title: "Clean Interface Design"
     },
     {
       type: "image",
-      src: "/uipic2.jpg", 
+      src: "/uipic2.jpg",
       alt: "Kupid App Interface Preview 2",
       title: "TikTok-Style Swiping"
     }
@@ -240,7 +240,7 @@ export default function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Prevent duplicate submissions
     if (isSubmitting || submitted) {
       return;
@@ -259,27 +259,27 @@ export default function App() {
     setIsSubmitting(true);
     setError("");
 
-            try {
-          // Use deployed server URL for production, localhost for development
-          const apiUrl = window.location.hostname === 'localhost' 
-            ? 'http://localhost:3001/api/submit'
-            : 'https://kupidwaitlist.onrender.com/api/submit'; // Deployed backend
-          
-          const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              name: form.name.trim(),
-              phone: `${form.countryCode} ${form.phone}`.trim(),
-              timestamp: new Date().toISOString(),
-              submission_id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
-            })
-          });
+    try {
+      // Use deployed server URL for production, localhost for development
+      const apiUrl = window.location.hostname === 'localhost'
+        ? 'http://localhost:3001/api/submit'
+        : 'https://kupidwaitlist.onrender.com/api/submit'; // Deployed backend
 
-          const data = await response.json();
-      
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          phone: `${form.countryCode} ${form.phone}`.trim(),
+          timestamp: new Date().toISOString(),
+          submission_id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+        })
+      });
+
+      const data = await response.json();
+
       if (data.result === 'success') {
         setSubmitted(true);
         setShowConfetti(true);
@@ -320,8 +320,8 @@ export default function App() {
             <div className="text-center animate-fadein">
               <div className="w-16 h-16 mx-auto mb-4 bg-orange-100 rounded-full flex items-center justify-center">
                 <svg className="w-8 h-8 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
-                  <rect x="8" y="4" width="2" height="16" rx="1"/>
-                  <rect x="14" y="4" width="2" height="16" rx="1"/>
+                  <rect x="8" y="4" width="2" height="16" rx="1" />
+                  <rect x="14" y="4" width="2" height="16" rx="1" />
                 </svg>
               </div>
               <h2 className="text-2xl font-semibold text-gray-900 mb-2">Waitlist Temporarily Paused</h2>
@@ -377,7 +377,7 @@ export default function App() {
                   required
                 />
               </div>
-              
+
               <div className="space-y-2">
                 <div className="flex gap-2">
                   <select
@@ -405,19 +405,21 @@ export default function App() {
                   />
                 </div>
               </div>
-              
+              <p className="text-xs text-gray-500 mt-1">
+                By providing your phone number and submitting this form, you agree to receive SMS updates and early access offers from Kupid. Message and data rates may apply. Reply STOP to unsubscribe.
+              </p>
+
               {error && (
                 <div className="text-red-500 text-sm animate-shake">{error}</div>
               )}
-              
+
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full py-3 px-6 rounded-xl font-semibold text-white transition-all duration-200 ${
-                  isSubmitting
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-[#ff5a8a] to-[#ffb6b6] hover:from-[#ff4a7a] hover:to-[#ffa6a6] transform hover:scale-105 shadow-lg hover:shadow-xl'
-                }`}
+                className={`w-full py-3 px-6 rounded-xl font-semibold text-white transition-all duration-200 ${isSubmitting
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-gradient-to-r from-[#ff5a8a] to-[#ffb6b6] hover:from-[#ff4a7a] hover:to-[#ffa6a6] transform hover:scale-105 shadow-lg hover:shadow-xl'
+                  }`}
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center gap-2">
@@ -439,7 +441,7 @@ export default function App() {
             <span className="bg-gradient-to-br from-[#ff5a8a] to-[#ffb6b6] bg-clip-text text-transparent">Sneak Peek</span> <span className="text-black">at Kupid</span>
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto text-center">Get a preview of the app that's about to change college dating</p>
-          
+
           <div className="relative max-w-xs mx-auto flex items-center justify-center">
             {/* Left Arrow */}
             <button
@@ -448,13 +450,13 @@ export default function App() {
               aria-label="Previous Preview"
               disabled={showcaseItems.length <= 1}
             >
-              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" /></svg>
             </button>
 
             <div className="flex flex-col items-center">
               <div className="w-full bg-white rounded-3xl shadow-xl border border-gray-100 transition-transform duration-300 hover:scale-105 cursor-pointer overflow-hidden">
                 {showcaseItems[showcaseIdx].type === "video" ? (
-                  <video 
+                  <video
                     src={showcaseItems[showcaseIdx].src}
                     className="w-full h-auto object-contain"
                     autoPlay
@@ -466,14 +468,14 @@ export default function App() {
                     Your browser does not support the video tag.
                   </video>
                 ) : (
-                  <img 
-                    src={showcaseItems[showcaseIdx].src} 
-                    alt={showcaseItems[showcaseIdx].alt} 
-                    className="w-full h-auto object-contain" 
+                  <img
+                    src={showcaseItems[showcaseIdx].src}
+                    alt={showcaseItems[showcaseIdx].alt}
+                    className="w-full h-auto object-contain"
                   />
                 )}
               </div>
-              
+
               <div className="text-center mt-4 mb-6">
                 <h3 className="font-bold text-lg text-gray-900">{showcaseItems[showcaseIdx].title}</h3>
               </div>
@@ -498,7 +500,7 @@ export default function App() {
               aria-label="Next Preview"
               disabled={showcaseItems.length <= 1}
             >
-              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
             </button>
           </div>
         </section>
@@ -520,13 +522,13 @@ export default function App() {
               </div>
             </div>
             <div className="flex gap-10 mt-10 items-center justify-center">
-              <button 
+              <button
                 className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 hover:bg-pink-100 text-gray-400 hover:text-pink-500 text-xl shadow transition disabled:opacity-40"
                 onClick={() => setFeatureIdx((featureIdx - 1 + features.length) % features.length)}
                 aria-label="Previous Feature"
                 disabled={features.length <= 1}
               >
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" /></svg>
               </button>
               <div className="flex gap-3">
                 {features.map((_, i) => (
@@ -544,7 +546,7 @@ export default function App() {
                 aria-label="Next Feature"
                 disabled={features.length <= 1}
               >
-                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+                <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
               </button>
             </div>
           </div>
@@ -585,20 +587,20 @@ export default function App() {
           </div>
         </div>
         {/* Animated background blob between features and showcase */}
-        <div className="absolute left-1/2 -translate-x-1/2 w-[420px] h-[320px] bg-gradient-to-br from-[#ffb6b6] via-[#ff5a8a] to-[#fff0f6] opacity-15 blur-3xl rounded-full top-0" style={{zIndex: -1}} />
+        <div className="absolute left-1/2 -translate-x-1/2 w-[420px] h-[320px] bg-gradient-to-br from-[#ffb6b6] via-[#ff5a8a] to-[#fff0f6] opacity-15 blur-3xl rounded-full top-0" style={{ zIndex: -1 }} />
       </main>
       <footer className="relative z-10 mt-16 text-gray-400 text-xs xs:text-sm text-center pb-6 border-t border-gray-100 pt-6 bg-white/80 overflow-visible">
-        <div className="absolute left-1/2 -translate-x-1/2 -top-10 animate-kupid-magic pointer-events-none" style={{marginLeft: '-12px'}}>
+        <div className="absolute left-1/2 -translate-x-1/2 -top-10 animate-kupid-magic pointer-events-none" style={{ marginLeft: '-12px' }}>
           <img src="/kupid.png" alt="Kupid Logo" className="w-12 h-12 object-contain" />
           {/* Floating hearts around Kupid */}
           <div className="absolute -top-4 -left-2 animate-heart-shoot-1 pointer-events-none">
-            <svg className="w-3 h-3 text-pink-400" fill="currentColor" viewBox="0 0 20 20"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/></svg>
+            <svg className="w-3 h-3 text-pink-400" fill="currentColor" viewBox="0 0 20 20"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" /></svg>
           </div>
           <div className="absolute -top-3 -right-2 animate-heart-shoot-2 pointer-events-none">
-            <svg className="w-3 h-3 text-pink-400" fill="currentColor" viewBox="0 0 20 20"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/></svg>
+            <svg className="w-3 h-3 text-pink-400" fill="currentColor" viewBox="0 0 20 20"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" /></svg>
           </div>
           <div className="absolute -bottom-1 -left-3 animate-heart-shoot-3 pointer-events-none">
-            <svg className="w-3 h-3 text-pink-400" fill="currentColor" viewBox="0 0 20 20"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/></svg>
+            <svg className="w-3 h-3 text-pink-400" fill="currentColor" viewBox="0 0 20 20"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" /></svg>
           </div>
         </div>
         <div className="mb-2">&copy; {new Date().getFullYear()} Kupid Dating. All rights reserved.</div>
@@ -613,19 +615,19 @@ export default function App() {
         </div>
         <div className="flex justify-center gap-6 mt-4">
           <a href="https://instagram.com/kupiddating" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-pink-500 transition">
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.7" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.7"/><path d="M16.5 7.5h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.7"/></svg>
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.7" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.7" /><path d="M16.5 7.5h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /><circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.7" /></svg>
           </a>
           <a href="https://linkedin.com/company/kupiddating" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-pink-500 transition">
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.7" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.7"/><path d="M7 10v4M7 7v.01M11 10v4m0-4v-1a2 2 0 1 1 4 0v1m0 0v4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/></svg>
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.7" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.7" /><path d="M7 10v4M7 7v.01M11 10v4m0-4v-1a2 2 0 1 1 4 0v1m0 0v4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /></svg>
           </a>
           <a href="https://tiktok.com/@kupiddating" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="hover:text-pink-500 transition">
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.7" viewBox="0 0 24 24"><path d="M16.5 3v2.5A4.5 4.5 0 0 0 21 10v4.5A4.5 4.5 0 0 1 16.5 19H7.5A4.5 4.5 0 0 1 3 14.5V10A4.5 4.5 0 0 1 7.5 5.5H9V3" stroke="currentColor" strokeWidth="1.7"/><circle cx="12" cy="12" r="3.5" stroke="currentColor" strokeWidth="1.7"/></svg>
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.7" viewBox="0 0 24 24"><path d="M16.5 3v2.5A4.5 4.5 0 0 0 21 10v4.5A4.5 4.5 0 0 1 16.5 19H7.5A4.5 4.5 0 0 1 3 14.5V10A4.5 4.5 0 0 1 7.5 5.5H9V3" stroke="currentColor" strokeWidth="1.7" /><circle cx="12" cy="12" r="3.5" stroke="currentColor" strokeWidth="1.7" /></svg>
           </a>
           <a href="https://youtube.com/@kupiddating" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-pink-500 transition">
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.7" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.7"/><path d="M9.5 9.5l5 2.5-5 2.5v-5z" stroke="currentColor" strokeWidth="1.7"/></svg>
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.7" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.7" /><path d="M9.5 9.5l5 2.5-5 2.5v-5z" stroke="currentColor" strokeWidth="1.7" /></svg>
           </a>
           <a href="https://linktr.ee/kupiddating" target="_blank" rel="noopener noreferrer" aria-label="Linktree" className="hover:text-pink-500 transition">
-            <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.7" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.7"/><path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/></svg>
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.7" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.7" /><path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /></svg>
           </a>
         </div>
       </footer>
@@ -635,7 +637,7 @@ export default function App() {
           {/* Simple floating hearts animation */}
           <div className="absolute w-full h-full overflow-hidden">
             {[...Array(18)].map((_, i) => (
-              <div key={i} className="absolute animate-heart-float" style={{left: `${Math.random()*100}%`, animationDelay: `${Math.random()*1.2}s`}}>
+              <div key={i} className="absolute animate-heart-float" style={{ left: `${Math.random() * 100}%`, animationDelay: `${Math.random() * 1.2}s` }}>
                 <img src="/kupid.png" alt="Kupid Logo" className="w-8 h-8 object-contain" />
               </div>
             ))}
